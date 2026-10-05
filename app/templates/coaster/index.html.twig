@@ -1,0 +1,44 @@
+
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="p-6">
+        <h1 class="text-2xl font-bold mb-6">Liste des coasters</h1>
+        
+        <div class="mb-6">
+            <a href="{{ path('app_coaster_add') }}" class="btn btn-primary">Ajouter un nouveau coaster</a>
+        </div>
+
+        <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nom</th>
+                        <th>Vitesse max</th>
+                        <th>Longueur</th>
+                        <th>Hauteur</th>
+                        <th>En service</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for coaster in coasters %}
+                        <!-- row -->
+                        <tr>
+                            <th>{{ coaster.id }}</th>
+                            <td>{{ coaster.name }}</td>
+                            <td>{{ coaster.maxSpeed }}</td>
+                            <td>{{ coaster.length }}</td>
+                            <td>{{ coaster.maxHeight }}</td>
+                            <td>{{ coaster.operating ? 'Oui' : 'Non' }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center p-4 italic">Aucun coaster n'a encore été enregistré.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
