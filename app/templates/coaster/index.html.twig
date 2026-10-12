@@ -19,6 +19,8 @@
                         <th>Longueur</th>
                         <th>Hauteur</th>
                         <th>En service</th>
+                        <th>Park</th>
+                        <th colspan="2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,10 +33,17 @@
                             <td>{{ coaster.length }}</td>
                             <td>{{ coaster.maxHeight }}</td>
                             <td>{{ coaster.operating ? 'Oui' : 'Non' }}</td>
+                            <td>{{ coaster.Park }}</td>
+                            <td>
+                                <a href="{{ path('app_coaster_edit', {'id':coaster.id}) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{  path('app_coaster_delete',{'id':coaster.id}) }}"class="btn btn-primary">Supprimer</a>
+                            </td>
+                            
+                            
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="6" class="text-center p-4 italic">Aucun coaster n'a encore été enregistré.</td>
+                            <td colspan="8" class="text-center p-4 italic">Aucun coaster n'a encore été enregistré.</td>
                         </tr>
                     {% endfor %}
                 </tbody>
